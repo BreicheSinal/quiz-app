@@ -32,6 +32,10 @@ const quizSlice = createSlice({
     incrementQsIndex: (state) => {
       state.questionIndex += 1;
     },
+
+    incrementScore: (state) => {
+      state.score += 10;
+    },
   },
 });
 
