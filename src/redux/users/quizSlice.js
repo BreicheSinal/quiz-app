@@ -20,6 +20,14 @@ const quizSlice = createSlice({
         data: quizData,
       };
     },
+
+    selectedAns: (state, action) => {
+      const selected = action.payload;
+      return {
+        ...state,
+        selectedAns: selected,
+      };
+    },
   },
 });
 
