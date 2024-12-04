@@ -28,6 +28,10 @@ const quizSlice = createSlice({
         selectedAns: selected,
       };
     },
+
+    incrementQsIndex: (state) => {
+      state.questionIndex += 1;
+    },
   },
 });
 
