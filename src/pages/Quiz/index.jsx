@@ -21,6 +21,8 @@ const Quiz = () => {
 
   const checkAns = (option) => {};
 
+  const checkTxtAns = () => {};
+
   return (
     <div>
       <h1>{quiz?.title}</h1>
@@ -51,7 +53,21 @@ const Quiz = () => {
           ))}
         </div>
       ) : (
-        <div></div>
+        <div>
+          <input
+            type="text"
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            disabled={answered}
+            placeholder="Type Here...."
+          />
+          <button
+            onClick={checkTxtAns}
+            disabled={answered || !userAnswer.trim()}
+          >
+            Submit
+          </button>
+        </div>
       )}
     </div>
   );
