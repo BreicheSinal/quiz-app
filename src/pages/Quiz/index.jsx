@@ -12,9 +12,20 @@ const Quiz = () => {
   const score = useSelector((state) => state.quizState.score);
   const selectedAns = useSelector((state) => state.quizState.selectedAns);
 
+  const [userAnswer, setUserAnswer] = useState("");
+  const [answered, setAnswered] = useState(false);
+
   if (!quizData || !quizData[quizIndex]) navigate("/");
 
-  return <div></div>;
+  const quiz = quizData[quizIndex];
+
+  return (
+    <div>
+      <h1>{quiz?.title}</h1>
+      <h2>Question {qsIndex + 1}</h2>
+      <p>{quiz?.questions[qsIndex].question}</p>
+    </div>
+  );
 };
 
 export default Quiz;
