@@ -2,6 +2,13 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import {
+  setQuizData,
+  selectedAns,
+  incrementQsIndex,
+  incrementScore,
+} from "../../redux/users/quizSlice";
+
 const Quiz = () => {
   const { quizIndex } = useParams();
   const navigate = useNavigate();
@@ -10,7 +17,7 @@ const Quiz = () => {
   const quizData = useSelector((state) => state.quizState.data);
   const qsIndex = useSelector((state) => state.quizState.questionIndex);
   const score = useSelector((state) => state.quizState.score);
-  const selectedAns = useSelector((state) => state.quizState.selectedAns);
+  const selectedAnswer = useSelector((state) => state.quizState.selectedAns);
 
   const [userAnswer, setUserAnswer] = useState("");
   const [answered, setAnswered] = useState(false);
@@ -19,7 +26,16 @@ const Quiz = () => {
 
   const quiz = quizData[quizIndex];
 
-  const checkAns = (option) => {};
+  const checkAns = (option) => {
+    if (!answered) {
+      setUserAnswer(option);
+      setAnswered(true);
+      if (option === quiz.questions[qsIndex].correctAnswer) {
+        dispatch(incrementScore());
+      }
+      dispatch(selectedAns([...selectedAnswer, option]));
+    }
+  };
 
   const checkTxtAns = () => {};
 
