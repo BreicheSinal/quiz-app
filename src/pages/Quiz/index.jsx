@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -37,7 +37,18 @@ const Quiz = () => {
     }
   };
 
-  const checkTxtAns = () => {};
+  const checkTxtAns = () => {
+    if (!answered) {
+      setAnswered(true);
+      if (
+        userAnswer.toLowerCase() ===
+        quiz.questions[qsIndex].correctAnswer.toLowerCase()
+      ) {
+        dispatch(incrementScore());
+      }
+      dispatch(selectedAns([...selectedAnswer, userAnswer]));
+    }
+  };
 
   const nxtQs = () => {};
 
