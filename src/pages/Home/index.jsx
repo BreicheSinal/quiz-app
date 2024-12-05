@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { quizData } from "../../data/data";
-
 import "./style.css";
 
 const Home = () => {
   const navigate = useNavigate();
+
   const score = useSelector((state) => state.quizState.score);
+  const quizData = useSelector((state) => state.quizState.data);
 
   const navigateToQuiz = (index) => {
     navigate(`/quiz/${index}`, { state: { quizIndex: index } });
