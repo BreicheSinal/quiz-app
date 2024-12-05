@@ -34,6 +34,12 @@ const quizSlice = createSlice({
     incrementScore: (state) => {
       state.score += 10;
     },
+
+    resetQuiz: (state) => {
+      state.questionIndex = 0;
+      state.selectedAns = [];
+      state.score = 0;
+    },
   },
 });
 
