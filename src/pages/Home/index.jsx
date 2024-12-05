@@ -8,11 +8,8 @@ const Home = () => {
   const navigate = useNavigate();
   const score = useSelector((state) => state.quizState.score);
 
-  console.log({ score });
-
   const navigateToQuiz = () => {
     navigate("/quiz");
-    console.log("clicked");
   };
   return (
     <div>
