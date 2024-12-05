@@ -1,5 +1,8 @@
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { setQuizData } from "./redux/users/quizSlice";
+import { quizData } from "./data/quizData";
 import store from "./redux/store";
 
 import Home from "./pages/Home";
@@ -9,6 +12,12 @@ import "./styles/App.css";
 import "./styles/index.css";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setQuizData(quizData));
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
