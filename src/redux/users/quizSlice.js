@@ -4,6 +4,7 @@ const initialState = {
   questionIndex: 0,
   selectedAns: [],
   score: 0,
+  totalScore: 0,
   data: [],
 };
 
@@ -33,6 +34,7 @@ const quizSlice = createSlice({
 
     incrementScore: (state) => {
       state.score += 10;
+      state.totalScore += 10;
     },
 
     resetQuiz: (state) => {

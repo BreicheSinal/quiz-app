@@ -7,7 +7,7 @@ import "./style.css";
 const Home = () => {
   const navigate = useNavigate();
 
-  const score = useSelector((state) => state.quizState.score);
+  const totalScore = useSelector((state) => state.quizState.totalScore);
   const quizData = useSelector((state) => state.quizState.data);
 
   const navigateToQuiz = (index) => {
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div>
       <h1>WELCOME MATE!</h1>
-      <p>Total Score:{score}</p>
+      <p>Total Score:{totalScore}</p>
       <div>
         {quizData.map((quiz, index) => (
           <div key={index}>
