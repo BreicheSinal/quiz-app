@@ -2,20 +2,29 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { quizData } from "../../data/data";
+
 import "./style.css";
 
 const Home = () => {
   const navigate = useNavigate();
   const score = useSelector((state) => state.quizState.score);
 
-  const navigateToQuiz = () => {
-    navigate("/quiz");
+  const navigateToQuiz = (index) => {
+    navigate(`/quiz/${index}`, { state: { quizIndex: index } });
   };
+
   return (
     <div>
       <h1>WELCOME MATE!</h1>
-      <p>Score:{score}</p>
-      <button onClick={navigateToQuiz}>Start</button>
+      <p>Total Score:{score}</p>
+      <div>
+        {quizData.map((quiz, index) => (
+          <div key={index}>
+            <button onClick={() => navigateToQuiz(index)}>{quiz.title}</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
