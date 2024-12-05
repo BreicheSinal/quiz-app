@@ -19,11 +19,40 @@ const Quiz = () => {
 
   const quiz = quizData[quizIndex];
 
+  const checkAns = (option) => {};
+
   return (
     <div>
       <h1>{quiz?.title}</h1>
       <h2>Question {qsIndex + 1}</h2>
       <p>{quiz?.questions[qsIndex].question}</p>
+      {quiz?.questions[qsIndex].type === "mcq" ? (
+        <div>
+          {quiz?.questions[qsIndex].options.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => checkAns(option)}
+              disabled={answered}
+              style={{
+                backgroundColor:
+                  answered &&
+                  option === userAnswer &&
+                  option === quiz?.questions[qsIndex].correctAnswer
+                    ? "green"
+                    : answered &&
+                      option === userAnswer &&
+                      option !== quiz?.questions[qsIndex].correctAnswer
+                    ? "red"
+                    : "white",
+              }}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
