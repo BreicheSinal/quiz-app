@@ -50,7 +50,15 @@ const Quiz = () => {
     }
   };
 
-  const nxtQs = () => {};
+  const nxtQs = () => {
+    if (qsIndex < quiz.questions.length - 1) {
+      dispatch(incrementQsIndex());
+      setUserAnswer("");
+      setAnswered(false);
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <div>
