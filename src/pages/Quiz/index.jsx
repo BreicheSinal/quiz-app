@@ -23,6 +23,8 @@ const Quiz = () => {
 
   const checkTxtAns = () => {};
 
+  const nxtQs = () => {};
+
   return (
     <div>
       <h1>{quiz?.title}</h1>
@@ -68,6 +70,12 @@ const Quiz = () => {
             Submit
           </button>
         </div>
+      )}
+
+      {answered ? (
+        <button onClick={nxtQs}>Next Question</button>
+      ) : (
+        <button disabled>Next Question</button>
       )}
     </div>
   );
