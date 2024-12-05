@@ -43,7 +43,12 @@ const quizSlice = createSlice({
   },
 });
 
-export const { setQuizData, selectedAns, incrementQsIndex, incrementScore } =
-  quizSlice.actions;
+export const {
+  setQuizData,
+  selectedAns,
+  incrementQsIndex,
+  incrementScore,
+  resetQuiz,
+} = quizSlice.actions;
 
 export default quizSlice;

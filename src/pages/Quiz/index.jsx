@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
-  setQuizData,
+  resetQuiz,
   selectedAns,
   incrementQsIndex,
   incrementScore,
@@ -59,6 +59,10 @@ const Quiz = () => {
       navigate("/");
     }
   };
+
+  useEffect(() => {
+    dispatch(resetQuiz());
+  }, [dispatch]);
 
   return (
     <div>
