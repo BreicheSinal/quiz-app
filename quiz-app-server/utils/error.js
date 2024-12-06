@@ -1,9 +1,7 @@
-export const throwError = ({ message, check, res, status }) => {
-  if (check ?? true) {
-    res.status(status ?? 500).send({
-      message: message ?? "Internal server error",
-    });
-  }
+export const throwError = ({ message, res, status = 500 }) => {
+  return res.status(status).send({
+    message: message || "Internal Server Error",
+  });
 };
 
 export const throwNotFound = ({ entity, check, res }) => {
