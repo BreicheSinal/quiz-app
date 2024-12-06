@@ -34,3 +34,40 @@ export const register = async (req, res) => {
     });
   }
 };
+
+export const login = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return throwNotFound({
+        entity: "User",
+        res,
+      });
+    }
+
+    const check = await bcrypt.compare(password, user.password);
+
+    if (!check) {
+      return throwError({
+        message: "Invalid credentials",
+        res,
+        status: 400,
+      });
+    }
+
+    const token = jwt.sign({ userId: user.id }, "secret");
+
+    return res.status(200).send({ user, token });
+  } catch (error) {
+    console.error("Error during login:", error.message);
+
+    return throwError({
+      message: "Login failed",
+      res,
+      status: 500,
+    });
+  }
+};
