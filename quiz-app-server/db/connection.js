@@ -1,8 +1,9 @@
 import { connect } from "mongoose";
+import dotenv from "dotenv";
 
 const connectToDatabase = async () => {
   try {
-    await connect("mongodb://localhost:27017/quizAppdb");
+    await connect(process.env.MONGO_URI);
     console.log("Connected to db!");
   } catch (error) {
     console.log(error);
