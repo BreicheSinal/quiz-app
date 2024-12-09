@@ -3,11 +3,13 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { SignInPage } from "@toolpad/core/SignInPage";
 import { useTheme } from "@mui/material/styles";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const providers = [{ id: "credentials", name: "Email and Password" }];
 
 export default function SlotPropsSignIn() {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleSignIn = async (provider, formData) => {
     const email = formData.get("email");
@@ -25,6 +27,7 @@ export default function SlotPropsSignIn() {
       const { token } = response.data;
 
       localStorage.setItem("authToken", token);
+      navigate("/home");
     } catch (error) {
       console.error(
         "Login error:",
